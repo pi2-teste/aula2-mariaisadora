@@ -5,6 +5,7 @@
  */
 package br.senac.sp.aula2.view;
 
+import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,8 +34,9 @@ public class ExemploDialogosView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnSalvar = new javax.swing.JButton();
         btnEntradaSimples = new javax.swing.JButton();
-        btnAlerta = new javax.swing.JButton();
         btnOpcoes = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        btnAlerta = new javax.swing.JButton();
         btnJDialog = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,17 +58,28 @@ public class ExemploDialogosView extends javax.swing.JFrame {
             }
         });
 
-        btnAlerta.setText("Alerta");
-        btnAlerta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlertaActionPerformed(evt);
-            }
-        });
-
         btnOpcoes.setText("Opções");
         btnOpcoes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOpcoesActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 131, Short.MAX_VALUE)
+        );
+
+        btnAlerta.setText("Alerta");
+        btnAlerta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlertaActionPerformed(evt);
             }
         });
 
@@ -76,13 +89,18 @@ public class ExemploDialogosView extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnAlerta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSalvar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEntradaSimples)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnOpcoes)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(btnAlerta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSalvar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEntradaSimples)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnOpcoes)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -90,10 +108,12 @@ public class ExemploDialogosView extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAlerta)
                     .addComponent(btnSalvar)
                     .addComponent(btnEntradaSimples)
-                    .addComponent(btnOpcoes))
+                    .addComponent(btnOpcoes)
+                    .addComponent(btnAlerta))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -130,26 +150,38 @@ public class ExemploDialogosView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAlertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlertaActionPerformed
-        // TODO add your handling code here:
-
+JOptionPane.showMessageDialog(null, "Alerta","Message Dialog", JOptionPane.WARNING_MESSAGE);
+// TODO add your handling code here:
+    
     }//GEN-LAST:event_btnAlertaActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+int retorno= (int)JOptionPane.showConfirmDialog(null,"Deseja Salvar? ", "Título",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
         // TODO add your handling code here:
         
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnEntradaSimplesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntradaSimplesActionPerformed
-        // TODO add your handling code here:
-        
+    String retorno = JOptionPane.showInputDialog(null, "Digite seu nome:");
+    // TODO add your handling code here:
     }//GEN-LAST:event_btnEntradaSimplesActionPerformed
 
     private void btnOpcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpcoesActionPerformed
+int escolha = JOptionPane.showOptionDialog(null,            //Componente pai
+                           "Qual sistema de medidas usar?", //mensagem,
+                           "Escolha uma opção",             //Título
+                           JOptionPane.YES_NO_OPTION,       //int optionType
+                           JOptionPane.INFORMATION_MESSAGE, //Tipo de Mensagem
+                           null,                            //Icon icon
+                           new Object[]{"Km","Milhas","Polegadas","Jardas"},  //Object[] opções,
+                           "Km");                                             //Object initialValue 
         // TODO add your handling code here:
         
     }//GEN-LAST:event_btnOpcoesActionPerformed
 
     private void btnJDialogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJDialogActionPerformed
+ExemploJDialogView dialogoView = new ExemploJDialogView(this,true); 
+dialogoView.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnJDialogActionPerformed
 
@@ -202,5 +234,6 @@ public class ExemploDialogosView extends javax.swing.JFrame {
     private javax.swing.JButton btnOpcoes;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
